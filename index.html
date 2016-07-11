@@ -32,6 +32,27 @@
 
     </section>
 
+    <script>
+    var addConnection = function(connection) {
+        connection.onconnected = function () {
+            this.onmessage = function (message) {
+                if (message.data == "say hello")
+                    this.send("hello");
+            };
+
+        };
+        navigator.receiver.connectionList
+                .then(function(list) {
+                    list.onconnectionavailable = function(connections) {
+                        addConnection(connections[connections.length - 1]);
+                    };
+                    list.connections.map(function(connection) {
+                        addConnection(connection);
+                    });
+                });
+    }
+</script>
+
   
   </body>
 </html>
