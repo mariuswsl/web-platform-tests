@@ -34,7 +34,7 @@
 
     <script>
     var addConnection = function(connection) {
-        connection.onconnected = function () {
+        connection.onconnect = function () {
             this.onmessage = function (message) {
                 if (message.data == "say hello")
                     this.send("hello");
