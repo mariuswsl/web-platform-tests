@@ -43,7 +43,7 @@
   };
 
   navigator.presentation.receiver.connectionList.then(function (list) {
-  	projecId.style.display = "red";
+  	projecId.style.color = "red";
     list.connections.map(function (connection) {
       addConnection(connection);
     });
