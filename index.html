@@ -11,7 +11,7 @@
   </head>
   <body>
     <section class="page-header">
-      <h1 class="project-name">Web-platform-tests</h1>
+      <h1 id="projecId" class="project-name">Web-platform-tests</h1>
       <h2 class="project-tagline">Test Suites for Web Platform specifications—including WHATWG, W3C and others</h2>
       <a href="https://github.com/mariuswsl/web-platform-tests" class="btn">View on GitHub</a>
       <a href="https://github.com/mariuswsl/web-platform-tests/zipball/master" class="btn">Download .zip</a>
@@ -33,24 +33,24 @@
     </section>
 
     <script>
-    var addConnection = function(connection) {
-        connection.onconnect = function () {
-            this.onmessage = function (message) {
-                if (message.data == "say hello")
-                    this.send("hello");
-            };
+  var addConnection = function(connection) {
+    connection.onconnect = function () {
+      this.onmessage = function (message) {
+        if (message.data == "say hello")
+          this.send("hello");
+      };
+    };
+  };
 
-        };
-        navigator.presentation.receiver.connectionList
-                .then(function(list) {
-                    list.onconnectionavailable = function(connections) {
-                        addConnection(connections[connections.length - 1]);
-                    };
-                    list.connections.map(function(connection) {
-                        addConnection(connection);
-                    });
-                });
-    }
+  navigator.presentation.receiver.connectionList.then(function (list) {
+  	projecId.style.display = "red";
+    list.connections.map(function (connection) {
+      addConnection(connection);
+    });
+    list.onconnectionavailable = function (evt) {
+      addConnection(evt.connection);
+    };
+  });
 </script>
 
   
