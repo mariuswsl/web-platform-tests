@@ -41,7 +41,7 @@
             };
 
         };
-        navigator.receiver.connectionList
+        navigator.presentation.receiver.connectionList
                 .then(function(list) {
                     list.onconnectionavailable = function(connections) {
                         addConnection(connections[connections.length - 1]);
